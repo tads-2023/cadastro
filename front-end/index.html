@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="formulario" action="">
+        <div>
+            <input type="text" name="aFazer" id="aFazer">
+            <label for="aFazer">O que vc vai fazer hoje?</label>
+        </div>
+
+        <div>
+            <button>Salvar</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.querySelector("#formulario");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const aFazer = document.querySelector("#aFazer").value;
+
+            fetch("http://localhost:3000/tarefas", {
+                method: "POST",
+                body: JSON.stringify({aFazer}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>
